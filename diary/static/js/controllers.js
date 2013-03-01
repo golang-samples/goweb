@@ -8,7 +8,6 @@ function ArticleListCntl($scope, $routeParams, $location, Article) {
 		});
 	});
 
-	console.log($routeParams);
 	if ($routeParams.articleId) {
 		$scope.selected = Article.get({articleId: $routeParams.articleId});
 	} else {
