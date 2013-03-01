@@ -1,0 +1,25 @@
+<div class="well sidebar-nav">
+	<ul class="nav nav-list">
+		<li class="nav-header">Articles</li>
+		<ul id="catalog-list" class="nav nav-list"
+			ng-repeat="article in articles">
+
+			<li ng-class="active(article)">
+			<a href="#/articles/{{article._id}}" ng-click="openArticle(article)">{{article.title}}</a>
+			</li>
+
+		</ul> 
+
+		<!-- Delete Button -->
+		<button class="btn btn-danger btn-mini" ng-click="deleteArticle()">
+			<i class="icon-trash icon-white"></i>Delete
+		</button>
+
+		<!-- Add Button -->
+		<button class="btn btn-primary btn-mini" ng-click="newArticle()">
+			<i class="icon-plus icon-white"></i>New
+		</button>
+	</ul>
+</div>
+
+

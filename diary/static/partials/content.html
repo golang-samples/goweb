@@ -1,0 +1,34 @@
+<div class="well" ng-show="selected">
+	<legend>Editing "{{selected.title}}"...</legend>
+	<form class="form-horizontal">
+
+		<!-- title -->
+		<div class="control-group">
+			<label class="control-label" for="inputTitle">Title</label>
+			<div class="controls">
+				<input type="text" id="inputTitle"
+				ng-model="selected.title" placeholder="Title"/>
+			</div>
+		</div>
+
+		<!-- content -->
+		<div class="control-group">
+			<label class="control-label" for="inputContent">Content</label>
+			<div class="controls">
+				<textarea id="inputContent" ng-model="selected.content">
+				</textarea>
+			</div>
+
+		</div>
+
+		<!-- save button -->
+		<div class="control-group">
+			<div class="controls">
+				<button class="btn btn-primary pull-right"
+					ng-click="selected.$save{articleId: selected._id}()">
+					<i class="icon-save"></i>Save
+				</button>
+			</div>
+		</div>
+	</form>
+</div>

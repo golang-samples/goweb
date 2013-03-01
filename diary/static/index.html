@@ -23,90 +23,27 @@
 		<script src="js/services.js"></script>
 		<script src="js/controllers.js"></script>
 		<script src="js/app.js"></script>
+
 	</head>
 
 	<body ng-controller="ArticleListCntl">
 
 		<!-- Menu -->
-		<div class="navbar navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<button type="button"class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="brand" href="/">My Diary</a>
-				</div>
-			</div>
-		</div>
+		<ng-include src="'partials/menu.html'"></ng-include>		
 
 		<div class="container-fluid">
 
 			<div class="row-fluid">
 
 				<!-- Sidebar -->
-				<div class="span3 well sidebar-nav">
-					<ul class="nav nav-list">
-						<li class="nav-header">Articles</li>
-						<ul id="catalog-list" class="nav nav-list"
-							ng-repeat="article in articles">
-
-							<li ng-class="active(article)">
-							<a href="#/articles/{{article._id}}" ng-click="openArticle(article)">{{article.title}}</a>
-							</li>
-
-						</ul> 
-
-						<!-- Delete Button -->
-						<button class="btn btn-danger btn-mini" ng-click="deleteArticle()">
-							<i class="icon-trash icon-white"></i>Delete
-						</button>
-
-						<!-- Add Button -->
-						<button class="btn btn-primary btn-mini" ng-click="newArticle()">
-							<i class="icon-plus icon-white"></i>New
-						</button>
-					</ul>
-				</div><!-- Sidebar -->
+				<div class="span3">
+					<ng-include src="'partials/sidebar.html'"></ng-include>
+				</div>
 
 				<!-- Content -->
 				<div class="span6">
-					<div class="well" ng-show="selected">
-						<legend>Editing "{{selected.title}}"...</legend>
-						<form class="form-horizontal">
-
-							<!-- title -->
-							<div class="control-group">
-								<label class="control-label" for="inputTitle">Title</label>
-								<div class="controls">
-									<input type="text" id="inputTitle"
-									ng-model="selected.title" placeholder="Title"/>
-								</div>
-							</div>
-
-							<!-- content -->
-							<div class="control-group">
-								<label class="control-label" for="inputContent">Content</label>
-								<div class="controls">
-									<textarea id="inputContent" ng-model="selected.content">
-									</textarea>
-								</div>
-
-							</div>
-
-							<!-- save button -->
-							<div class="control-group">
-								<div class="controls">
-									<button class="btn btn-primary pull-right"
-										ng-click="selected.$save{articleId: selected._id}()">
-										<i class="icon-save"></i>Save
-									</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div><!-- Content -->
+					<ng-include src="'partials/content.html'"></ng-include>			
+				</div>
 
 			</div><!-- row -->
 		</div><!-- container -->
