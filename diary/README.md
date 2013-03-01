@@ -1,6 +1,8 @@
 Diary sample
 =================
 
+It is a simple diary webapp example of Goweb and AngularJS.
+
 Requires
 ---------------
 
