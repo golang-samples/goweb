@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="diary">
+	<head>
+		<meta chaset="UTF-8"/>
+		<title>My Diary</title>
+
+		<!-- bootstrap -->
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap-responsive.min.css">
+		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+		<!-- underscore -->
+		<script src="lib/underscore-min.js"></script>
+
+		<!-- AngularJS -->
+		<script src="lib/angular/angular.js"></script>
+		<script src="lib/angular/angular-resource.min.js"></script>
+
+		<!-- App Scripts -->
+		<script src="js/services.js"></script>
+		<script src="js/controllers.js"></script>
+		<script src="js/app.js"></script>
+	</head>
+
+	<body ng-controller="ArticleListCntl">
+
+		{{100 + 100}}
+
+		<!-- Menu -->
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<button type="button"class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="brand" href="/">My Diary</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Sidebar -->
+		<div class="well sidebar-nav">
+			<ul class="nav nav-list">
+				<li class="nav-header">Diaries</li>
+				<ul id="catalog-list" class="nav nav-list" ng-repeat="article in articles">
+					
+					<li ng-class="active(article)">
+					<a href="#/articles/{{article._id}}" ng-click="openArticle(article)">{{article.title}}</a>
+					</li>
+
+				</ul> 
+
+				<!-- Delete Button -->
+				<a class="btn btn-danger btn-mini" href="#" ng-click="deleteArticle()">
+					<i class="icon-trash icon-white">
+					</i>Delete
+				</a>
+
+				<!-- Add Button -->
+				<a class="btn btn-primary btn-mini" href="#" ng-click="newArticle()">
+					<i class="icon-plus icon-white">
+					</i>New
+				</a>
+			</div>
+		</body>
+	</html>
