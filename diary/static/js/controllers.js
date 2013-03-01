@@ -3,7 +3,9 @@ function ArticleListCntl($scope, $routeParams, $location, Article) {
 	// Get articles
 	$scope.articles = [];
 	Article.get({}, function(r) {
-		$scope.articles = r.D;
+		$scope.articles = _.map(r.D, function(d) {
+			return new Article(d);
+		});
 	});
 
 	console.log($routeParams);

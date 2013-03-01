@@ -4,6 +4,9 @@
 		<meta chaset="UTF-8"/>
 		<title>My Diary</title>
 
+		<!-- app css -->
+		<link rel="stylesheet" type="text/css" href="css/app.css">
+
 		<!-- bootstrap -->
 		<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap-responsive.min.css">
@@ -38,29 +41,73 @@
 			</div>
 		</div>
 
-		<!-- Sidebar -->
-		<div class="well sidebar-nav">
-			<ul class="nav nav-list">
-				<li class="nav-header">Diaries</li>
-				<ul id="catalog-list" class="nav nav-list" ng-repeat="article in articles">
-					
-					<li ng-class="active(article)">
-					<a href="#/articles/{{article._id}}" ng-click="openArticle(article)">{{article.title}}</a>
-					</li>
+		<div class="container-fluid">
 
-				</ul> 
+			<div class="row-fluid">
 
-				<!-- Delete Button -->
-				<a class="btn btn-danger btn-mini" href="#" ng-click="deleteArticle()">
-					<i class="icon-trash icon-white">
-					</i>Delete
-				</a>
+				<!-- Sidebar -->
+				<div class="span3 well sidebar-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header">Diaries</li>
+						<ul id="catalog-list" class="nav nav-list" ng-repeat="article in articles">
 
-				<!-- Add Button -->
-				<a class="btn btn-primary btn-mini" href="#" ng-click="newArticle()">
-					<i class="icon-plus icon-white">
-					</i>New
-				</a>
-			</div>
-		</body>
-	</html>
+							<li ng-class="active(article)">
+							<a href="#/articles/{{article._id}}" ng-click="openArticle(article)">{{article.title}}</a>
+							</li>
+
+						</ul> 
+
+						<!-- Delete Button -->
+						<button class="btn btn-danger btn-mini" ng-click="deleteArticle()">
+							<i class="icon-trash icon-white"></i>Delete
+						</button>
+
+						<!-- Add Button -->
+						<button class="btn btn-primary btn-mini" ng-click="newArticle()">
+							<i class="icon-plus icon-white"></i>New
+						</button>
+					</ul>
+				</div><!-- Sidebar -->
+
+				<!-- Content -->
+				<div class="span6">
+					<div class="well" ng-show="selected">
+						<legend>Editing "{{selected.title}}"...</legend>
+						<form class="form-horizontal">
+
+							<!-- title -->
+							<div class="control-group">
+								<label class="control-label" for="inputTitle">Title</label>
+								<div class="controls">
+									<input type="text" id="inputTitle"
+									ng-model="selected.title" placeholder="Title"/>
+								</div>
+							</div>
+
+							<!-- content -->
+							<div class="control-group">
+								<label class="control-label" for="inputContent">Content</label>
+								<div class="controls">
+									<textarea id="inputContent" ng-model="selected.content">
+									</textarea>
+								</div>
+
+							</div>
+
+							<!-- save button -->
+							<div class="control-group">
+								<div class="controls">
+									<button class="btn btn-primary pull-right"
+										ng-click="selected.$save{articleId: selected._id}()">
+										<i class="icon-save"></i>Save
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div><!-- Content -->
+
+			</div><!-- row -->
+		</div><!-- container -->
+	</body>
+</html>
