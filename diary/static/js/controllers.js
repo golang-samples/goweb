@@ -33,8 +33,10 @@ function ArticleListCntl($scope, $routeParams, $location, Article) {
 			content: ""			
 		});
 
-		article.$save();
-		$scope.articles.push(article)
+		article.$save(function(d){
+			article._id = d.D._id;
+			$scope.articles.push(article)
+		});
 	};
 
 	$scope.deleteArticle = function() {
