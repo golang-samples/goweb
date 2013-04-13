@@ -7,6 +7,10 @@ import (
 
 type MyController struct{}
 
+func (cr *MyController) Create(cx *goweb.Context) {
+	fmt.Fprintf(cx.ResponseWriter, "Create resource")
+}
+
 func (cr *MyController) Read(id string, cx *goweb.Context) {
 	fmt.Fprintf(cx.ResponseWriter, "Read resource %s", id)
 }
