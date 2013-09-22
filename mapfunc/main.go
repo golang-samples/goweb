@@ -2,17 +2,19 @@ package main
 
 import (
 	"fmt"
-	"github.com/stretchrcom/goweb/goweb"
+	"github.com/stretchr/goweb"
+	"github.com/stretchr/goweb/context"
+	"net/http"
 )
 
 func main() {
-
-	handler := func(c *goweb.Context) {
-		name := c.PathParams["name"]
-		animal := c.PathParams["animal"]
-		fmt.Fprintf(c.ResponseWriter, "Hey %s, your favorite animal is a %s", name, animal)
+	handler := func(c context.Context) error {
+		name := c.PathParams().Get("name")
+		animal := c.PathParams().Get("animal")
+		body := fmt.Sprintf("Hey %s, your favorite animal is a %s", name, animal)
+		return goweb.Respond.With(c, http.StatusOK, []byte(body))
 	}
 
-	goweb.MapFunc("/people/{name}/animals/{animal}", handler)
-	goweb.ListenAndServe(":8080")
+	goweb.Map("/people/{name}/animals/{animal}", handler)
+	http.ListenAndServe(":8080", goweb.DefaultHttpHandler())
 }
