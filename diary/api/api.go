@@ -1,9 +1,9 @@
 package api
 
 import (
+	"./article"
 	"labix.org/v2/mgo"
 	"log"
-	"./article"
 )
 
 func Init(db *mgo.Database) {

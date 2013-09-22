@@ -3,7 +3,7 @@ function ArticleListCntl($scope, $routeParams, $location, Article) {
 	// Get articles
 	$scope.articles = [];
 	Article.get({}, function(r) {
-		$scope.articles = _.map(r.D, function(d) {
+		$scope.articles = _.map(r.d, function(d) {
 			return new Article(d);
 		});
 	});
@@ -34,7 +34,7 @@ function ArticleListCntl($scope, $routeParams, $location, Article) {
 		});
 
 		article.$save(function(d){
-			article._id = d.D._id;
+			article._id = d.d._id;
 			$scope.articles.push(article)
 		});
 	};

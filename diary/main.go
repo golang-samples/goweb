@@ -3,7 +3,7 @@ package main
 import (
 	"./api"
 	"flag"
-	"github.com/stretchrcom/goweb/goweb"
+	"github.com/stretchr/goweb"
 	"labix.org/v2/mgo"
 	"log"
 	"net/http"
@@ -37,8 +37,7 @@ func main() {
 
 	log.Println("Initializing handlers...")
 	api.Init(db)
-	goweb.ConfigureDefaultFormatters()
-	http.Handle("/api/", http.StripPrefix("/api", goweb.DefaultHttpHandler))
+	http.Handle("/api/", http.StripPrefix("/api", goweb.DefaultHttpHandler()))
 	log.Println("Registered a handler for RESTful API.")
 
 	http.Handle("/", http.FileServer(http.Dir("static")))
